@@ -6,7 +6,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
       origin_access_identity = aws_cloudfront_origin_access_identity.s3_web_bucket.cloudfront_access_identity_path
     }
   }
-  
+
   enabled             = true
   default_root_object = "index.html"
   price_class         = "PriceClass_100"
@@ -60,9 +60,12 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 }
 
-data "aws_cloudfront_cache_policy" "no-cache" {
-  name = "CachingDisabled"
+resource "aws_cloudfront_origin_access_identity" "s3_web_bucket" {
 }
 
-resource "aws_cloudfront_origin_access_identity" "s3_web_bucket" {
+####################
+### Data Sources ###
+####################
+data "aws_cloudfront_cache_policy" "no-cache" {
+  name = "CachingDisabled"
 }

@@ -11,6 +11,9 @@ resource "aws_s3_bucket" "web_bucket" {
   tags = local.common_tags
 }
 
+####################
+### Data Sources ###
+####################
 data "aws_iam_policy_document" "s3_policy" {
   statement {
     sid       = "CloudfrontAccess"
